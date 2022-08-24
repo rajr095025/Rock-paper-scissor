@@ -1,0 +1,72 @@
+html {
+    background-image: url(backgroundimage.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: blanchedalmond;
+    font-size: 50px;
+}
+
+.buttons {
+    margin-top: 80px;
+    margin-bottom: 50px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+#rock {
+    color: black;
+    font-weight: bold;
+    font-size:30px;
+    background-image: url(/style/Rock.jpg);
+    background-size: cover;
+    height: 300px;
+    width: 300px;
+    
+}
+
+#paper {
+    color: black;
+    font-weight: bold;
+    font-size:30px;
+    background-image: url(/style/Paper.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    width: 300px;
+    
+}
+
+#scissor {
+    color: black;
+    font-weight: bold;
+    font-size:30px;
+    background-image: url(/style/Scissors\ .jpg);
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    width: 300px;
+    
+}
+
+.resultsection {
+    color: bisque;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+span {
+    color: brown;
+}
+.footer {
+    color: brown;
+    font-size: 30px;
+    text-align: right;
+    
+}
