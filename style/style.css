@@ -10,8 +10,8 @@ h1 {
 }
 
 .buttons {
-    margin-top: 80px;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     display: flex;
     gap: 40px;
     justify-content: center;
@@ -23,6 +23,7 @@ h1 {
     font-size:30px;
     background-image: url(Rock.jpg);
     background-size: cover;
+    background-position: center;
     height: 300px;
     width: 300px;
     
@@ -60,10 +61,21 @@ h1 {
     align-items: center;
 }
 
+#restart {
+    background-color: aqua;
+    font-size: 20px;
+    height: 30px;
+    width: 100px;
+    font-weight: bold;
+
+    border-radius: 20px;
+    
+}
 
 span {
     color: white;
 }
+
 .footer {
     color: white;
     font-weight: bold;

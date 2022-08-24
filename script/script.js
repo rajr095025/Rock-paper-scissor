@@ -7,44 +7,56 @@ paperClicked.addEventListener('click', () => game("paper"));
 const scissorClicked = document.querySelector('#scissor');
 scissorClicked.addEventListener('click', () => game("scissor"));
 
+const restartClicked = document.querySelector('#restart');
+restartClicked.addEventListener('click', () => {
+    playerWonCount = 0;
+    computerWonCount = 0;
+    matchDrawnCount = 0;
+    document.getElementById("roundresult").innerHTML = "";
+    document.getElementById("playerwoncount").innerHTML = "";
+    document.getElementById("matchdrawncount").innerHTML = "";
+    document.getElementById("computerwoncount").innerHTML = "";
+    document.getElementById("finalresult").innerHTML = "";
+});
+
 let playerWonCount = 0;
 let computerWonCount = 0;
 let matchDrawnCount = 0;
 
 function game(playerSelection){
     let finalResult = playRound(playerSelection);
-    console.log(finalResult);
-    document.getElementById("roundresult").innerHTML = finalResult;
-    
-    if (finalResult == "Player Won"){
+
+    if ((finalResult == "Player Won")&&(playerWonCount<=5)&&(computerWonCount!=5)){
         playerWonCount++
-    } else if (finalResult == "Computer Won"){
+    } else if ((finalResult == "Computer Won")&&(playerWonCount!=5)&&(computerWonCount<=5)){
         computerWonCount++
-    } else if (finalResult == "Match Drawn"){
+    } else if ((finalResult == "Match Drawn")&&(playerWonCount!=5)&&(computerWonCount!=5)){
         matchDrawnCount++
     }
 
-    document.getElementById("playerwoncount").innerHTML = playerWonCount;
-    document.getElementById("matchdrawncount").innerHTML = matchDrawnCount;
-    document.getElementById("computerwoncount").innerHTML = computerWonCount;
-
-    console.log(playerWonCount);
-    console.log(computerWonCount);
-    console.log(matchDrawnCount);
-
-    document.getElementById("finalresult").innerHTML = "";
-
-    if (playerWonCount == 5 ){
-        document.getElementById("finalresult").innerHTML = "Player won first 5 times";
-        playerWonCount = 0
-        computerWonCount = 0
-        matchDrawnCount = 0
-    } else if (computerWonCount == 5 ){
-        document.getElementById("finalresult").innerHTML = "Computer won first 5 times";
-        playerWonCount = 0
-        computerWonCount = 0
-        matchDrawnCount = 0
+    if ((playerWonCount<=5)&&(computerWonCount<=5)){
+        document.getElementById("roundresult").innerHTML = finalResult;
+        document.getElementById("playerwoncount").innerHTML = playerWonCount;
+        document.getElementById("matchdrawncount").innerHTML = matchDrawnCount;
+        document.getElementById("computerwoncount").innerHTML = computerWonCount;
     }
+
+
+    if ((playerWonCount ==5)&&(computerWonCount<5)){
+        document.getElementById("finalresult").innerHTML = "Player won first 5 times";
+        alert(`Match ended 
+        Player Won First 5 times
+        To play again
+        press Restart button `);
+    } else if ((computerWonCount ==5 )&&(playerWonCount<5)){
+        document.getElementById("finalresult").innerHTML = "Computer won first 5 times";
+        alert(`Match ended 
+        Computer Won First 5 times
+        To play again
+        press Restart button `);
+    }
+
+
 
 }
 
@@ -71,9 +83,3 @@ function playRound(playerSelection){
         return "Computer Won";
     }
 }
-
-
-
-  
-
-
