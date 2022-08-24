@@ -21,7 +21,7 @@ h1 {
     color: black;
     font-weight: bold;
     font-size:30px;
-    background-image: url(/style/Rock.jpg);
+    background-image: url(Rock.jpg);
     background-size: cover;
     height: 300px;
     width: 300px;
@@ -32,7 +32,7 @@ h1 {
     color: black;
     font-weight: bold;
     font-size:30px;
-    background-image: url(/style/Paper.jpg);
+    background-image: url(Paper.jpg);
     background-size: cover;
     background-position: center;
     height: 300px;
@@ -44,7 +44,7 @@ h1 {
     color: black;
     font-weight: bold;
     font-size:30px;
-    background-image: url(/style/Scissors\ .jpg);
+    background-image: url(Scissors\ .jpg);
     background-size: cover;
     background-position: center;
     height: 300px;
