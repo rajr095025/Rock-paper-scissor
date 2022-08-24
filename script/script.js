@@ -1,47 +1,75 @@
-console.log("Hello This is Rock paper scissor game")
 function getComputerChoice() {
     let values = ["rock","paper","scissor"]
     return values[Math.floor(Math.random() * values.length)]
 }
-function playRound(playerSelection,computerSelection){
-    if(playerSelection == "rock" && computerSelection == "scissor"){
-        return("you won");
-    }else if (playerSelection == "rock" && computerSelection == "rock"){
-        return("same selection");
-    }else if (playerSelection == "rock" && computerSelection == "paper"){
-        return("you lost");
-    }else if (playerSelection == "scissor" && computerSelection == "paper"){
-        return("you won");
-    }else if (playerSelection == "scissor" && computerSelection == "scissor"){
-        return("same selection");
-    }else if (playerSelection == "scissor" && computerSelection == "rock"){
-        return("you lost");
-    }else if (playerSelection == "paper" && computerSelection == "rock"){
-        return("you won");
-    }else if (playerSelection == "paper" && computerSelection == "paper"){
-        return("same selection");
-    }else if (playerSelection == "paper" && computerSelection == "scissor"){
-        return("you lost");
+const rockClicked = document.querySelector('#rock');
+rockClicked.addEventListener('click', () => game("rock"));
+
+const paperClicked = document.querySelector('#paper');
+paperClicked.addEventListener('click', () => game("paper"));
+
+const scissorClicked = document.querySelector('#scissor');
+scissorClicked.addEventListener('click', () => game("scissor"));
+
+let playerWonCount = 0;
+let computerWonCount = 0;
+let matchDrawnCount = 0;
+
+function playRound(playerSelection){
+    let computerSelection = getComputerChoice();
+    if((playerSelection == "rock" && computerSelection == "scissor")||
+    (playerSelection == "scissor" && computerSelection == "paper") ||
+    (playerSelection == "paper" && computerSelection == "rock")){
+        return "playerWon";
+    } else if((playerSelection == "rock" && computerSelection == "rock")||
+    (playerSelection == "paper" && computerSelection == "paper") ||
+    (playerSelection == "scissor" && computerSelection == "scissor")){
+        return "matchDrawn";
+
+    } else if((playerSelection == "rock" && computerSelection == "paper")||
+    (playerSelection == "scissor" && computerSelection == "rock") ||
+    (playerSelection == "paper" && computerSelection == "scissor")){
+        return "computerWon";
     }
 }
-function game(){
-    let start = prompt(`if you want help type 'help' and after help reload the page
-     (or) want to start the game type 'start'`)
-    if(start=="help"){
-        console.log(`Rules 
-        1)Rock beats scissor
-        2)Scissor beats paper
-        3)paper beats rock`)
-    }else if(start == "start"){   
-        for (let i=0; i<5; i++){
-            let playerInput = prompt(`type 'rock' or 'paper' or 'scissor' to play the game`);
-            playerSelection = playerInput.toLowerCase()
-            getComputerChoice();
-            let computerSelection = getComputerChoice();
-            console.log("player selected",playerSelection);
-            console.log("computer selected",computerSelection);
-            console.log(playRound(playerSelection,computerSelection));   
-        }
-    }    
+
+function game(playerSelection){
+    let finalResult = playRound(playerSelection);
+    console.log(finalResult);
+    document.getElementById("demo1").innerHTML = finalResult;
+    
+    if (finalResult == "playerWon"){
+        playerWonCount++
+    } else if (finalResult == "computerWon"){
+        computerWonCount++
+    } else if (finalResult == "matchDrawn"){
+        matchDrawnCount++
+    }
+
+    console.log(playerWonCount);
+    console.log(computerWonCount);
+    console.log(matchDrawnCount);
+
+    if (playerWonCount == 4 ){
+        document.getElementById("demo2").innerHTML = "Player won 5 times first";
+    } else if (computerWonCount == 4 ){
+        document.getElementById("demo2").innerHTML = "Computer won 5 times first";
+    }
+
+
+
+
 }
-game();
+
+
+//let finalResult = playRound();
+//document.getElementById("demo").innerHTML = playRound();
+//console.log(finalResult);
+//let result = document.querySelector('#results')
+//let round = document.createElement('div')
+//round.textContent = playRound();
+//result.appendChild(round)
+
+  
+
+
